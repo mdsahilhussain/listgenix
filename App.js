@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer, TabActions } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+const Tab = createBottomTabNavigator();
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import ColorSet from "./constants/ColorSet";
+import { IconScreen, HomeScreen } from "./screen";
+import MyBottomNav from "./navigation/MyBottomNav";
 
 export default function App() {
+  const [list, setList] = useState([
+    {
+      id: 1,
+      task: "sahil",
+    },
+    {
+      id: 2,
+      task: "sahil",
+    },
+    {
+      id: 3,
+      task: "sahil",
+    },
+  ]);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <NavigationContainer style={{ backgroundColor: "#000000" }}>
+      <MyBottomNav list={list} />
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = StyleSheet.create({});
