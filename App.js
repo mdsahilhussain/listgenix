@@ -10,23 +10,51 @@ import { IconScreen, HomeScreen } from "./screen";
 import MyBottomNav from "./navigation/MyBottomNav";
 
 export default function App() {
-  const [list, setList] = useState([
-    {
-      id: 1,
-      task: "sahil",
-    },
-    {
-      id: 2,
-      task: "sahil",
-    },
-    {
-      id: 3,
-      task: "sahil",
-    },
-  ]);
+  const [list, setList] = useState([]);
+  const [subList, setSubList] = useState([]);
+
+  const addHandler = (enterTask) => {
+    if (enterTask.trim() === "") {
+      return;
+    }
+
+    setList((currentGoals) => [
+      ...currentGoals,
+      {
+        id: list.length + 1,
+        task: enterTask,
+        subList: subList,
+      },
+    ]);
+  };
+
+  const addSubListHandler = (enterSubTask) => {
+    if (enterSubTask.trim() === "") {
+      return;
+    }
+
+    setSubList((currentGoals) => [
+      ...currentGoals,
+      {
+        id: subList.length + 1,
+        task: enterSubTask,
+      },
+    ]);
+  };
+
+  const goalsRemoveHandler = (id) => {
+    setList((currentGoals) => {
+      return currentGoals.filter((goals) => goals.id !== id);
+    });
+  };
+
   return (
     <NavigationContainer style={{ backgroundColor: "#000000" }}>
-      <MyBottomNav list={list} />
+      <MyBottomNav
+        list={list}
+        onAddGoal={addHandler}
+        onDelGoal={goalsRemoveHandler}
+      />
       <StatusBar style="auto" />
     </NavigationContainer>
   );

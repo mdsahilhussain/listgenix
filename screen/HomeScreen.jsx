@@ -5,13 +5,14 @@ import Card from "../components/Card";
 
 const HomeScreen = (props) => {
   const { list } = props;
-  console.log("list", list);
+  let list_length = list?.length;
+
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
         <Text style={styles.h5}>Hello,</Text>
         <Text style={styles.h1}>M Sahil Hussain</Text>
-        <Text style={styles.p}>Your have four task remain</Text>
+        <Text style={styles.p}>{`Your have ${list_length} task remain`}</Text>
 
         <View>
           <FlatList

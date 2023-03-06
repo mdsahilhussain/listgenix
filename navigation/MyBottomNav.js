@@ -5,7 +5,8 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import ColorSet from "../constants/ColorSet";
 import { AddScreen, HomeScreen, PlaneScreen } from "../screen";
 
-const MyBottomNav = () => {
+const MyBottomNav = (props) => {
+  const { list, onAddGoal, onCancelGoal, onDelGoal } = props;
   return (
     <Tab.Navigator
       screenOptions={{
@@ -24,32 +25,26 @@ const MyBottomNav = () => {
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              name="home-outline"
-              color={color}
-              size={size}
-              style={{
-                backgroundColor: "#fffff",
-                padding: 5,
-              }}
-            />
+            <Ionicons name="home-outline" color={color} size={size} />
           ),
         }}
-      />
+      >
+        {() => <HomeScreen list={list} />}
+      </Tab.Screen>
       <Tab.Screen
         name="Add"
-        component={AddScreen}
         options={{
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color }) => (
             <View style={styles.addButton}>
               <Ionicons name="add" color={color} size={32} />
             </View>
           ),
         }}
-      />
+      >
+        {() => <AddScreen onAddGoal={onAddGoal} />}
+      </Tab.Screen>
       <Tab.Screen
         name="Plane"
         component={PlaneScreen}

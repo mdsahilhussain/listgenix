@@ -20,14 +20,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 4,
     borderRadius: 8,
-    // shadowColor: ColorSet.textColor,
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 8,
-    // },
-    // shadowOpacity: 0.6,
-    // shadowRadius: 10,
-    // elevation: 6,
-    marginBottom: 12,
+    marginBottom: 8,
   },
 });
