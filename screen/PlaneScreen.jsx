@@ -16,6 +16,7 @@ export default PlaneScreen;
 
 const styles = StyleSheet.create({
   screen: {
+    paddingTop: 44,
     paddingVertical: 24,
     paddingHorizontal: 24,
     flex: 1,
